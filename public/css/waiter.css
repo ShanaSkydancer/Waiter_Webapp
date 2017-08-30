@@ -1,0 +1,26 @@
+body {
+    font-family: 'Acme', sans-serif;    
+    background-color: black;
+ }
+
+ h1 {
+  font-family: 'Acme', sans-serif;    
+  font-size: 35px;
+  color: white;
+}
+
+h2 {
+  font-family: 'Acme', sans-serif;    
+  font-size: 30px;
+  color: white;
+}
+
+.mdl-data-table th {
+  font-size: 27px;
+  color: black;
+}
+
+.mdl-data-table td {
+  font-size: 25px;
+  color: black;
+}
