@@ -1,42 +1,45 @@
-  <form action="/log-in" method="get">
-  
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Better Latte Than Never</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-blue.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<link rel="stylesheet" href="vendors/bootstrap.min.css">
-	<link rel="stylesheet" href="vendors/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
   </head>
 
 <body>
-<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-	<main class="mdl-layout__content">
-		<div class="mdl-card mdl-shadow--6dp">
-			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-				<h2 class="mdl-card__title-text">Log In</h2>
-			</div>
-	  	<div class="mdl-card__supporting-text">
-				<form action="#">
-					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" id="username" />
-						<label class="mdl-textfield__label" for="username">Username</label>
-					</div>
-					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="password" id="userpass" />
-						<label class="mdl-textfield__label" for="userpass">Password</label>
-					</div>
-				</form>
-			</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
-			</div>
-		</div>
-	</main>
-</div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto col-md-3">
+                <div class="form-login">
+                <h4>Please Log In</h4>
+                <form class="inputForm" action="/login" method="post">
+                    <input type="text" id="userInput" name="userInput" class="userInput form-control input-sm chat-input" placeholder="Username" />
+                    </br>
+                    <input type="text" id="userPass" name="userPass" class="userPass form-control input-sm chat-input" placeholder="Password" />
+                    </br>
+                    <div class="wrapper">
+                    <span class="group-btn">     
+                    <button type="submit" class="btn btn-primary btn-md">Log In<i class="fa fa-sign-in"></i></button>
+                    </span>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  {{#if messages.error}}
+      <div class="error">
+        {{messages.error}}
+      </div>
+    {{/if}}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
 </body>

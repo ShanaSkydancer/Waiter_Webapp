@@ -35,6 +35,7 @@ app.use(express.static('vendors'));
 //     regiNum: String
 //   });
 //   const regiNumModel = mongoose.model('regiNumModel', regiSchema);
+
 //Port and environment variable
 app.set('port', (process.env.PORT || 3000));
 
@@ -75,25 +76,32 @@ app.get('/', (req, res) => {
 // app.get('/waiter', waiterAvailabilityRoutes.login);
 //Route to add waiters
 // app.get('/waiter/add', waiterAvailabilityRoutes.add);
-app.get('/log-in', function (req, res) {
-  res.render("login");
-});
+// app.get('/log-in', function (req, res) {
+//   res.render("login");
+// });
 
-app.get('/admin', function (req, res) {
-  res.render("admin");
-});
+// app.get('/admin', function (req, res) {
+//   res.render("admin");
+// });
 
-app.get('/waiter', function (req, res) {
-  res.render("waiter");
-});
+// app.get('/waiter', function (req, res) {
+//   res.render("waiter");
+// });
 
-
+//Shows the login for admin of waiter to access
+app.get('/login', waiterAvailabilityRoutes.login);
+app.get('/waiter/:username', waiterAvailabilityRoutes.waiter);
+app.get('/admin', waiterAvailabilityRoutes.admin);
 //Post data
-// app.post('/waiter/add', waiterAvailabilityRoutes.add);
+app.post('/login', waiterAvailabilityRoutes.login);
+app.post('/waiter', waiterAvailabilityRoutes.login);
+app.post('/admin', waiterAvailabilityRoutes.login);
+
+
 
 //Hosts my server
   var server = app.listen(app.get("port"), () => {
   var host = server.address().address;
   var port = server.address().port;
-  console.log('Registration Numbers Webapp listening at http://%s:%s', host, port);
+  console.log('Waiter Webapp listening at http://%s:%s', host, port);
 });

@@ -5,25 +5,41 @@ module.exports = () => {
 //Used it at the beginning of my code but it can go anywhere or I can create a break in the inspector
 debugger;
 
+    const login = (req, res, next) => {
+        var username = req.body.userInput;
+        var password = req.body.userPass;
 
+            if (username){
+                console.log(username);
+                if (username === ""){
+                    console.log(username);         
+                    req.flash('error', 'No username input!');                
+                } else if (password === ""){
+                    console.log(password);                                
+                    req.flash('error', 'No password input!');                                
+                }
+                if (username === "admin" || username === "Admin"){
+                    res.redirect('/admin');
+                }else if (username !== "admin" || username !== "Admin"){
+                    console.log(username);                    
+                    res.redirect('/waiter/' + username);            
+                    }
+            } else {
+                res.render('login');
+            }
+    };
 
-//     const login = (req, res) => {
-       
-//     };
+    const waiter = (req, res, next) => {
+        res.render('waiter');
+    };
 
-//     const index = (req, res) => {
-       
-//     };
+    const admin = (req, res) => {
+        res.render('admin');        
+    };
 
-//     const add = (req, res, next) => {
-//     };
-
-//     const filter = (req, res) => {
-//     };
-
-//     return {
-//         index,
-//         add,
-//         fliter
-//     }
+    return {
+        login,
+        waiter,
+        admin
+    }
 };

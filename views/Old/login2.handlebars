@@ -1,0 +1,49 @@
+  <form action="/login" method="get">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Better Latte Than Never</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<link rel="stylesheet" href="vendors/bootstrap.min.css">
+	<link rel="stylesheet" href="vendors/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+  </head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+	<main class="mdl-layout__content">
+		<div class="mdl-card mdl-shadow--6dp">
+			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+				<h2 class="mdl-card__title-text">Log In</h2>
+			</div>
+	  	<div class="mdl-card__supporting-text">
+				<form class="inputForm" action="/login" method="post">
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="userInput mdl-textfield__input" type="text" name="userInput" id="userInput" />
+						<label class="mdl-textfield__label" name="userInput" for="userInput">Username</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="passInput mdl-textfield__input" type="password" name="passInput" id="passInput" />
+						<label class="mdl-textfield__label" for="passInput">Password</label>
+					</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<button class="logIn mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit">Log in</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</main>
+</div>
+
+  {{#if messages.error}}
+      <div class="error">
+        {{messages.error}}
+      </div>
+    {{/if}}
+
+</body>
