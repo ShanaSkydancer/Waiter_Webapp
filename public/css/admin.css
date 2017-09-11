@@ -1,18 +1,18 @@
 body {
     font-family: 'Acme', sans-serif;    
-    background-color: black;
+    background-color: white;
  }
 
 h1 {
   font-family: 'Acme', sans-serif;    
   font-size: 35px;
-  color: white;
+  color: black;
 }
 
 h2 {
   font-family: 'Acme', sans-serif;    
   font-size: 30px;
-  color: white;
+  color: black;
 }
 
 .mdl-data-table th {
@@ -23,4 +23,13 @@ h2 {
 .mdl-data-table td {
   font-size: 25px;
   color: black;
+}
+
+.resetButton{
+  background-color: grey;
+  font-size: 17.5px !important;
+}
+
+.resetButton:hover{
+background-color: #428bca;
 }

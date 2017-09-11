@@ -1,23 +1,19 @@
 body {
     font-family: 'Acme', sans-serif;    
-    background-color: #000000;
+    background-color: white;
     font-size: 17.5px !important;
  }
 
  h1 {
   font-family: 'Acme', sans-serif;    
   font-size: 35px;
-  color: white;
+  color: black;
 }
 
 h2 {
   font-family: 'Acme', sans-serif;    
   font-size: 30px;
-  color: white;
-}
-
-.row {
-display: block !important;
+  color: black;
 }
 
 .form-group input[type="radio"],
@@ -106,5 +102,19 @@ display: block !important;
 }
 
 .control-label {
-  color: white;
+  color: black;
+}
+
+.submitButton{
+	background-color: grey;
+}
+
+.submitButton:hover{
+	background-color: #428bca;
+}
+
+.error {
+	color: #F21A1A;
+	font-size: 15px;
+	text-align: center;
 }

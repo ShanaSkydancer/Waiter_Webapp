@@ -22,19 +22,20 @@ app.use(express.static('routes'));
 app.use(express.static('vendors'));
 
 //Connect Mongoose to your .js and have it access the MongoBD
-// const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/waiter_webapp";
-// mongoose.connect(mongoURL);
+const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/waiter_webapps";
+mongoose.connect(mongoURL);
 
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', () => {
-  //   console.log('Connected to the DB!');
-  // });
-  
-//   var regiSchema = mongoose.Schema({
-//     regiNum: String
-//   });
-//   const regiNumModel = mongoose.model('regiNumModel', regiSchema);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('Connected to the DB!');
+});
+
+  var workingSchema = new mongoose.Schema({
+    waiter: String,
+    days: Array
+  });
+  const workingModel = mongoose.model('workingModel', workingSchema);
 
 //Port and environment variable
 app.set('port', (process.env.PORT || 3000));
@@ -57,7 +58,9 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: {
+    secure: true
+  }
 }));
 app.use(flash());
 
@@ -65,11 +68,11 @@ app.use(flash());
 const WaiterRoutes = require("./waiteravailability");
 
 //Access the function
-const waiterAvailabilityRoutes = WaiterRoutes();
+const waiterAvailabilityRoutes = WaiterRoutes(workingModel);
 
 //Using "/" makes it the "index page" i.e. it has no route
 app.get('/', (req, res) => {
-    res.render("index");
+  res.render("index");
 });
 
 //Showing the loging
@@ -94,13 +97,13 @@ app.get('/waiter/:username', waiterAvailabilityRoutes.waiter);
 app.get('/admin', waiterAvailabilityRoutes.admin);
 //Post data
 app.post('/login', waiterAvailabilityRoutes.login);
-app.post('/waiter', waiterAvailabilityRoutes.login);
+app.post('/waiter/:username', waiterAvailabilityRoutes.waiter);
 app.post('/admin', waiterAvailabilityRoutes.login);
 
 
 
 //Hosts my server
-  var server = app.listen(app.get("port"), () => {
+var server = app.listen(app.get("port"), () => {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Waiter Webapp listening at http://%s:%s', host, port);
