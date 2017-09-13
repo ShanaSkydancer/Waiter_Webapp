@@ -11,13 +11,13 @@ module.exports = (workingModel) => {
 
             if (username){
                 if (username === ""){
-                    req.flash('error', 'No username input!');                
+                    req.flash('error', 'No username input');                
                 } else if (password === ""){                              
-                    req.flash('error', 'No password input!');                                
+                    req.flash('error', 'No password input');                                
                 }
                 if (username === "admin" || username === "Admin"){
                     res.redirect('/admin');
-                }else if (username !== "admin" || username !== "Admin"){
+                } else if (username !== "admin" || username !== "Admin"){
                     res.redirect('/waiter/' + username);            
                     }
             } else {
@@ -49,7 +49,7 @@ module.exports = (workingModel) => {
                     console.log('Error trying to find waiter');                    
                 } else {
                     if (!result) {
-                        console.log(result);
+                        // console.log(result);
                         var newwaiter = new workingModel({
                             waiter: username,
                             days: daysWorking
@@ -59,7 +59,7 @@ module.exports = (workingModel) => {
                                 return next(err);
                             } else {
                                 console.log('Successfully added waiter and days working!');
-                                req.flash('error', 'Successfully added waiter and days working!');
+                                req.flash('info', 'Successfully added waiter and days working!');
                                 res.render('waiter');                       
                             };
                         });
@@ -68,7 +68,7 @@ module.exports = (workingModel) => {
                         result.save((err, updatedDays) => {
                             if (err) console.log(err);
                         });
-                        req.flash('error', 'Waiter has already been added, updated days working!');
+                        req.flash('info', 'Updated days working!');
                         res.render('waiter');
                     }
                 };
@@ -78,8 +78,56 @@ module.exports = (workingModel) => {
         }
     };
 
-    const admin = (req, res) => {
-        res.render('admin');        
+    const admin = (req, res, next) => {
+        var username = req.body.userInput;        
+
+        var workingList = { 
+                            Sunday : [],
+                            Monday : [],
+                            Tuesday : [],
+                            Wednesday : [],
+                            Thursday : [],
+                            Friday : [] 
+                        }
+
+        workingModel.findOne({waiter: username}, (err, result) => {
+            if (err){
+                return next(err);
+                console.log('Error trying to find waiter');                    
+            } else{
+                if (result) {
+                    for (var i = 0; i < waiter.length; i++) {
+                        var currentDay = days[i];
+                        console.log(currentDay);
+                        if (currentDay = "Sunday"){
+                            workingList.Sunday.push(waiter);
+                            console.log('Pushed waiter to Sunday Object Array!')
+                            res.render('admin', {Saturday})
+                        } else if (currentDay = "Monday"){
+                            workingList.Monday.push(waiter);
+                            console.log('Pushed waiter to Monday Object Array!')                            
+                        } else if (currentDay = "Tuesday"){
+                            workingList.Tuesday.push(waiter);
+                            console.log('Pushed waiter to Tuesday Object Array!')                            
+                        } else if (currentDay = "Wednesday"){
+                            workingList.Wednesday.push(waiter);
+                            console.log('Pushed waiter to Wednesday Object Array!')                            
+                        } else if (currentDay = "Thursday"){
+                            workingList.Thursday.push(waiter);
+                            console.log('Pushed waiter to Thursday Object Array!')                            
+                        } else if (currentDay = "Friday"){
+                            workingList.Friday.push(waiter);
+                            console.log('Pushed waiter to Friday Object Array!')                            
+                        } else if (currentDay = "Saturday"){
+                            workingList.Saturday.push(waiter);
+                            console.log('Pushed waiter to Saturday Object Array!')                            
+                        }
+                    }
+                    res.render('admin');
+                }
+            }
+            res.render('admin');
+        });
     };
 
     return {
