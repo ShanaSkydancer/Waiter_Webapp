@@ -98,7 +98,7 @@ app.get('/admin', waiterAvailabilityRoutes.admin);
 //Post data
 app.post('/login', waiterAvailabilityRoutes.login);
 app.post('/waiter/:username', waiterAvailabilityRoutes.waiter);
-app.post('/admin', waiterAvailabilityRoutes.login);
+app.post('/admin/remove', waiterAvailabilityRoutes.remove);
 
 
 

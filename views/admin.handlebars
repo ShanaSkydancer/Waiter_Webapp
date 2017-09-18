@@ -15,65 +15,70 @@
     <div class="row">
          <h1>Welcome Administrator</h1>
          <h2>Waiters week schedule</h2> 
-    <table class="table table-responsive table-hover">
+    <div class="table-responsive">
+    <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Days of the Week</th>
-          <th>Waiters</th>
+          <th class="col-md">Days of the Week</th>
+          <th class="col-md">Waiters</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="{{status.SundayStatus}}">
             <th scope="row">Sunday</th>
-            {{#each Sunday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Sunday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.MondayStatus}}">
             <th scope="row">Monday</th>
-            {{#each Monday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Monday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.TuesdayStatus}}">
             <th scope="row">Tuesday</th>
-            {{#each Tuesday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Tuesday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.WednesdayStatus}}">
             <th scope="row">Wednesday</th>
-            {{#each Wednesday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Wednesday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.ThursdayStatus}}">
             <th scope="row">Thursday</th>
-            {{#each Thursday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Thursday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.FridayStatus}}">
             <th scope="row">Friday</th>
-            {{#each Friday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Friday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
-        <tr>
+        <tr class="{{status.SaturdayStatus}}">
             <th scope="row">Saturday</th>
-            {{#each Saturday}}
-            <td>{{@index}}. {{this}}</td>
+            {{#each workingList.Saturday}}
+            <td>{{this}}</td>
             {{/each}}
         </tr>
       </tbody>
     </table>
-        <div class="buttonReset">
-          <br>
-          <br>
-          <button class="resetButton" type="submit">Reset</button>
-        </div>
+    <br>
+        <form class="resetForm" action="/admin/remove" method="post">
+            <div class="buttonReset wrapper">
+                <span class="group-btn">     
+                    <button name="resetButton" type="submit" class="resetButton btn btn-primary btn-md">Reset</button>
+                </span>
+            </div>
+        </form>
       </div>
     </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

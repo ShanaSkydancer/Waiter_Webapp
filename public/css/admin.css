@@ -33,3 +33,15 @@ td {
 .resetButton:hover{
 background-color: #428bca;
 }
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.normal {
+  background-color: white;
+}

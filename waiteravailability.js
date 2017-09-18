@@ -78,61 +78,79 @@ module.exports = (workingModel) => {
         }
     };
 
-    const admin = (req, res, next) => {
-        var username = req.body.userInput;        
+    const admin = (req, res, next) => {    
+        var resetButton = req.body.resetButton;
 
-        var workingList = { 
-                            Sunday : [],
-                            Monday : [],
-                            Tuesday : [],
-                            Wednesday : [],
-                            Thursday : [],
-                            Friday : [] 
-                        }
-
-        workingModel.findOne({waiter: username}, (err, result) => {
+        workingModel.find({}, (err, waiterDocuments) => {
             if (err){
                 return next(err);
                 console.log('Error trying to find waiter');                    
-            } else{
-                if (result) {
-                    for (var i = 0; i < waiter.length; i++) {
-                        var currentDay = days[i];
-                        console.log(currentDay);
-                        if (currentDay = "Sunday"){
-                            workingList.Sunday.push(waiter);
-                            console.log('Pushed waiter to Sunday Object Array!')
-                            res.render('admin', {Saturday})
-                        } else if (currentDay = "Monday"){
-                            workingList.Monday.push(waiter);
-                            console.log('Pushed waiter to Monday Object Array!')                            
-                        } else if (currentDay = "Tuesday"){
-                            workingList.Tuesday.push(waiter);
-                            console.log('Pushed waiter to Tuesday Object Array!')                            
-                        } else if (currentDay = "Wednesday"){
-                            workingList.Wednesday.push(waiter);
-                            console.log('Pushed waiter to Wednesday Object Array!')                            
-                        } else if (currentDay = "Thursday"){
-                            workingList.Thursday.push(waiter);
-                            console.log('Pushed waiter to Thursday Object Array!')                            
-                        } else if (currentDay = "Friday"){
-                            workingList.Friday.push(waiter);
-                            console.log('Pushed waiter to Friday Object Array!')                            
-                        } else if (currentDay = "Saturday"){
-                            workingList.Saturday.push(waiter);
-                            console.log('Pushed waiter to Saturday Object Array!')                            
-                        }
+            } else{        
+                function getDayStatus(waitersWorking) {
+                    // console.log(waitersWorking)
+                    if (waitersWorking.length > 3) {
+                        return 'red';
+                    } else if (waitersWorking.length === 3) {
+                        return 'green';
+                    } else if (waitersWorking.length < 3) {
+                        return 'normal';
                     }
-                    res.render('admin');
                 }
-            }
-            res.render('admin');
+                var workingList = { 
+                    Sunday : [],
+                    Monday : [],
+                    Tuesday : [],
+                    Wednesday : [],
+                    Thursday : [],
+                    Friday : [],
+                    Saturday : [] 
+                }
+                
+                if (waiterDocuments) {
+                    waiterDocuments.forEach((waiter) => {
+                        waiter.days.forEach((day) => {
+                            // console.log(day);
+                            workingList[day].push(waiter.waiter);
+                        })
+                    })            
+
+                    var statusList = {
+                        SundayStatus : getDayStatus(workingList.Sunday),
+                        MondayStatus : getDayStatus(workingList.Monday),
+                        TuesdayStatus : getDayStatus(workingList.Tuesday),
+                        WednesdayStatus : getDayStatus(workingList.Wednesday),
+                        ThursdayStatus : getDayStatus(workingList.Thursday),
+                        FridayStatus : getDayStatus(workingList.Friday),
+                        SaturdayStatus : getDayStatus(workingList.Saturday)
+                    }
+                    // console.log(SundayStatus);
+                    res.render('admin', { 
+                        workingList : workingList,
+                        status : statusList
+                    });
+                }
+            };
         });
     };
+
+    const remove = (req, res, next) => {
+        let resetButton = req.body.resetButton;
+
+        workingModel.remove({}, function(err, removed){
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Data has been deleted!')
+            res.redirect('/admin');
+            }
+        });
+    }
+
 
     return {
         login,
         waiter,
-        admin
+        admin,
+        remove
     }
 };
