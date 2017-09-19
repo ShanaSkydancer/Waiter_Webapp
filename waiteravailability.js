@@ -58,8 +58,8 @@ module.exports = (workingModel) => {
                             if (err) {
                                 return next(err);
                             } else {
-                                console.log('Successfully added waiter and days working!');
-                                req.flash('info', 'Successfully added waiter and days working!');
+                                console.log('Successfully added waiter and days working');
+                                req.flash('info', 'Successfully added waiter and days working');
                                 res.render('waiter');                       
                             };
                         });
