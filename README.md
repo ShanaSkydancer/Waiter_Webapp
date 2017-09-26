@@ -8,7 +8,7 @@
 * [How to get the app](#how-to-get-the-app)
 * [Installation Guide](#installation)
 * [Mongo Database](#mongodb)
-* [How to run tests](#runningtests)
+* [How to run tests](#running-tests)
 
 
 ## About app
