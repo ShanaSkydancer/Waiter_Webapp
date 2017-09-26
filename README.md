@@ -1,14 +1,14 @@
 # Waiter Webapp
 ---------------
 
-### Contents:
+### Table of Contents:
 ***
-* About the app
-* How to use the app
-* How to get the app
-* Getting the app from Github
-* Installation Guide
-* How to run tests
+* [About the app](#about-app)
+* [How to use the app](#how-to-use-the-app)
+* [How to get the app](#how-to-get-the-app)
+* [Installation Guide](#installation)
+* [Mongo Database](#mongodb)
+* [How to run tests](#runningtests)
 
 
 ## About app
