@@ -21,7 +21,7 @@ The Waiter Webapp is perfect system for waiters and admin alike. Waiters log in 
 ## How to use the app
 ***
 
-The applicaton is live on heroku here:
+The application is live on heroku here:
 `https://codex-waiter-webapp.herokuapp.com/`
 
 1. A user logs in as a waiter.
@@ -38,7 +38,7 @@ The applicaton is live on heroku here:
 	* The tables cell will turn red if there is more than 3 waiters working a day.
 	* Green if there is just 3 waiters working (the perfect amount).
 	* Stay white if there is less than 3 waiters working.
-	* As an admin you can press the 'reset' button and remove all waiters working for that week, so that the waiters can sumbit new working days for the next week.
+	* As an admin you can press the 'reset' button and remove all waiters working for that week, so that the waiters can submit new working days for the next week.
 
 ## Developers Section
 ---------------------
@@ -62,7 +62,7 @@ The applicaton is live on heroku here:
 1. Fork and clone the repository from Github
 
 2. Go to the folder on your computer/laptop that you've just cloned and run `npm install`
-	* This is going to download all the dependancies that you'll need because they were listed in the projects package.json file.
+	* This is going to download all the dependencies that you'll need because they were listed in the projects package.json file.
 
 3. Now you can run 'npm nodemon' in the same folder. Using this to run your code and it will automatically restart when you make changes to your code.
 
