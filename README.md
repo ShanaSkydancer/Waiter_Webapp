@@ -108,18 +108,20 @@ To run mocha you simply use
 
 3. Add a `.travis.yml` file into your project folder
 
-4. In that file add:
+4. In that file add language and version:
 
-`
-language: node_js
-node_js: - "stable"
-`
+	```
+	language: node_js
+	node_js: - "stable"
+	````
 
 5. You will need to go into your package.json file and set up a test script
 
-`"scripts": {
-    "test": "node_modules/.bin/mocha"
-  }`
+	```
+	"scripts": {
+	    "test": "node_modules/.bin/mocha"
+	  }
+	```
 
 6. Dont forget to push now to Github
 	* Push your commit that adds .travis.yml to your repository
