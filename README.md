@@ -110,9 +110,9 @@ To run mocha you simply use
 
 4. In that file add:
 
-`language: node_js
-node_js:
--"stable"
+`
+language: node_js
+node_js: - "stable"
 `
 
 5. You will need to go into your package.json file and set up a test script
