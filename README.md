@@ -52,9 +52,9 @@ The application is live on heroku here:
 1. NPM
 2. Node
 3. Nodemon
-4. Mocha
-5. Travis CI
-6. MongoDB
+4. MongoDB
+5. Mocha
+6. Travis CI
 
 ## Installation
 ***
@@ -84,6 +84,9 @@ The application is live on heroku here:
 
 ## Running Tests
 ***
+
+To run these tests, you will need to create tests.
+Make a "Tests" folder in Project file and create your test functions in there.
 
 We will be running test with:
 1. Mocha
